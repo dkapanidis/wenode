@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-dev1',
+  db: 'mongodb://172.17.42.1/mean-dev1',
   mongoose: {
     debug: true
   },
