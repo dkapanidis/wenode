@@ -2,6 +2,9 @@ FROM dockerfile/nodejs
 
 MAINTAINER Dimitris Kapanidis <dimitris.kapanidis@harbur.io>
 
+# Needed for PhantomJS (http://www.dorukdestan.com/blog/phantomjs-installation-on-lxc/)
+RUN apt-get update -y && apt-get install -y libfreetype6 libfontconfig && apt-get clean
+
 WORKDIR /home/mean
 
 # Install Mean.JS Prerequisites
@@ -16,6 +19,7 @@ RUN npm install
 ADD .bowerrc /home/mean/.bowerrc
 ADD bower.json /home/mean/bower.json
 RUN bower install --config.interactive=false --allow-root
+
 
 # Make everything available for start
 ADD . /home/mean
